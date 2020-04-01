@@ -21,8 +21,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'BanDong' do
-  # Pods for BanDong
+target 'Hoja' do
+  # Pods for Hoja
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -54,7 +54,7 @@ target 'BanDong' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'BanDongTests' do
+  target 'HojaTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -71,10 +71,10 @@ target 'BanDong' do
   end
 end
 
-target 'BanDong-tvOS' do
-  # Pods for BanDong-tvOS
+target 'Hoja-tvOS' do
+  # Pods for Hoja-tvOS
 
-  target 'BanDong-tvOSTests' do
+  target 'Hoja-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
