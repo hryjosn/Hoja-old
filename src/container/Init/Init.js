@@ -19,18 +19,16 @@ const Init = () => {
     };
     useEffect(() => {
         const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        if (!user) {
+            Actions.replace('Login');
+        } else {
+            Actions.replace('Main');
+        }
         return subscriber; // unsubscribe on unmount
     }, []);
 
     if (initializing) {
         return null;
-    }
-
-    if (!user) {
-        Actions.replace('Login');
-    }else {
-        Actions.replace('Main');
-
     }
     return (
         <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>

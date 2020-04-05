@@ -21,6 +21,7 @@ const initState = {
 class LoginStore extends storeAction {
     constructor() {
         super();
+        this.initState = initState
         extendObservable(this, initState);
     }
 
@@ -30,6 +31,7 @@ class LoginStore extends storeAction {
             await auth().signInWithEmailAndPassword(email, password);
             alert('Login successful!');
             Actions.replace('Main')
+            this.reset();
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
                 console.log('That email address is already in use!');
@@ -45,6 +47,7 @@ class LoginStore extends storeAction {
             await auth().signOut();
             alert('User signed out!');
             Actions.replace('Auth')
+            this.reset();
         } catch (error) {
             alert(error);
         }
