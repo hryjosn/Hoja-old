@@ -8,23 +8,23 @@ import { Actions } from 'react-native-router-flux';
 
 const { container } = style;
 
-const Login = () => {
-    const { paramsUpdate, params,handleLogin } = useStores()['LoginStore'];
+const SignUp = () => {
+    const { handleSignUp, paramsUpdate, params } = useStores()['SignUpStore'];
     const { email, password } = params;
     return (
         <Page>
-            <View style={{ ...container }}>
+            <View style={{ justifyContent: 'center', ...container }}>
                 <View style={{ marginTop: 40 }}>
-                    <Text style={{ fontSize: 30 }}>Login</Text>
+                    <Text style={{ fontSize: 30 }}>SignUp</Text>
                 </View>
-                <View style={{ marginVertical: 20 }}>
+                <View style={{marginVertical:20}}>
                     <Input label={'email'}
                            value={email}
                            onChangeText={text => {
                                paramsUpdate('email', text);
                            }}/>
                 </View>
-                <View style={{ marginVertical: 20 }}>
+                <View style={{marginVertical:20}}>
                     <Input label={'password'}
                            value={password}
                            onChangeText={text => {
@@ -32,12 +32,13 @@ const Login = () => {
                            }}/>
                 </View>
                 <View style={{ marginVertical: 20,flexDirection:"row" }}>
-                    <Button onPress={()=>{Actions.replace('SignUp')}}> SignUp </Button>
-                    <Button onPress={()=>{handleLogin()}}> Login </Button>
+                    <Button onPress={()=>{Actions.replace('Login')}}> Login </Button>
+                    <Button onPress={()=>{handleSignUp()}}> Submit </Button>
                 </View>
+
             </View>
         </Page>
     );
 };
-export default observer(Login);
+export default observer(SignUp);
 // const styles = StyleSheet.create({});

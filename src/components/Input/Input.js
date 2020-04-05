@@ -1,23 +1,25 @@
 import React from 'react';
-import {TextInput} from 'react-native';
-import styled from 'styled-components/native';
+import { TextInput, View,StyleSheet } from 'react-native';
 import Text from '../Text';
 
 const Input = (props) => {
-  const {label, containerStyle} = props;
-  return (
-    <>
-      <Text>{label ?? ''}</Text>
-      <Container style={containerStyle}>
-        <TextInput style={{fontSize: 16}} {...props} />
-      </Container>
-    </>
-  );
+    const { label, containerStyle } = props;
+    return (
+        <>
+            <Text>{label ?? ''}</Text>
+            <View style={{ ...containerStyle, ...styles.inputStyle }}>
+                <TextInput style={{ fontSize: 16 }} {...props} />
+            </View>
+        </>
+    );
 };
 export default Input;
-const Container = styled.View`
-  width: 100%;
-  border-bottom-width: 0.5;
-  padding-bottom: 5px;
-  padding-left: 3px;
-`;
+const styles = StyleSheet.create({
+    inputStyle: {
+        width: '100%',
+        borderBottomWidth: 0.5,
+        paddingBottom: 5,
+        paddingLeft: 3,
+    },
+
+});

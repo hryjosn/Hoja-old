@@ -1,30 +1,42 @@
-import React, {useEffect} from 'react';
-import {View, Image} from 'react-native';
-import {observer} from 'mobx-react';
-import {Actions} from 'react-native-router-flux';
+import React, { useEffect, useState } from 'react';
+import { View, Text } from 'react-native';
+import { observer } from 'mobx-react';
+import { Actions } from 'react-native-router-flux';
 import AsyncStorage from '@react-native-community/async-storage';
-import {logo} from '@image';
-import styles from '@container/Login/Login.styles';
-import {useStores} from '@store';
+import auth from '@react-native-firebase/auth';
+// import styles from '@container/Login/Login.styles';
 
 const Init = () => {
-  const {init} = useStores().InitStore;
-  useEffect(() => {
-    init();
-    (async function () {
-      const token = await AsyncStorage.getItem('token');
-      if (token) {
-        Actions.replace('Main');
-      } else {
+    // Set an initializing state whilst Firebase connects
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
+    // Handle user state changes
+    const onAuthStateChanged = (user) => {
+        setUser(user);
+        if (initializing) {
+            setInitializing(false);
+        }
+    };
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+    }, []);
+
+    if (initializing) {
+        return null;
+    }
+
+    if (!user) {
         Actions.replace('Login');
-      }
-    })();
-  }, []);
-  return (
-    <View style={{marginTop: 100, alignItems: 'center', height: '100%'}}>
-      <Image source={logo} style={styles.logoStyle} />
-    </View>
-  );
+    }else {
+        Actions.replace('Main');
+
+    }
+    return (
+        <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+            <Text style={{ fontSize: 34 }}>Hoja</Text>
+        </View>
+    );
 };
 
 export default observer(Init);

@@ -1,7 +1,6 @@
 import { action, extendObservable } from 'mobx';
 import storeAction from '@store/storeAction';
 import auth from '@react-native-firebase/auth';
-import {Actions} from 'react-native-router-flux';
 
 const initState = {
     isFetching: false,
@@ -18,18 +17,17 @@ const initState = {
     },
 };
 
-class LoginStore extends storeAction {
+class SignUpStore extends storeAction {
     constructor() {
         super();
         extendObservable(this, initState);
     }
 
-    @action handleLogin = async () => {
+    @action handleSignUp = async () => {
         const { email, password } = this.params;
         try {
-            await auth().signInWithEmailAndPassword(email, password);
-            alert('Login successful!');
-            Actions.replace('Main')
+            await auth().createUserWithEmailAndPassword(email, password);
+            alert('User account created & signed in!');
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
                 console.log('That email address is already in use!');
@@ -37,18 +35,9 @@ class LoginStore extends storeAction {
             if (error.code === 'auth/invalid-email') {
                 console.log('That email address is invalid!');
             }
-            alert(error.code)
-        }
-    };
-    @action handleSignOut = async () => {
-        try {
-            await auth().signOut();
-            alert('User signed out!');
-            Actions.replace('Auth')
-        } catch (error) {
-            alert(error);
+            console.error(error);
         }
     };
 }
 
-export default new LoginStore();
+export default new SignUpStore();
