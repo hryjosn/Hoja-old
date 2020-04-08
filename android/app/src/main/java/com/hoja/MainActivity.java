@@ -1,4 +1,4 @@
-package com.johnsonsy.hoja;
+package com.hoja;
 
 import com.facebook.react.ReactActivity;
 
