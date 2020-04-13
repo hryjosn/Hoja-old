@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import Text from './../Text';
 
-const Button = ({onPress, children, style}) => {
+export const Button = ({onPress, children, style}) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -21,11 +21,11 @@ const styles = {
     paddingBottom: 10,
   },
   buttonStyle: {
-    borderWidth:1,
-    borderRadius:20,
-    marginHorizontal:10,
-    flex:1
+    borderWidth: 1,
+    borderRadius: 20,
+    marginHorizontal: 10,
+    flex: 1,
   },
 };
 
-export default Button;
+// export default Button;

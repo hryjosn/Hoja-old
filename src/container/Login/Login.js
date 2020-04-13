@@ -1,43 +1,144 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { Page, Input,Button } from '@components';
+import { StyleSheet, View, TextInput, Image, Dimensions, KeyboardAvoidingView, Platform } from 'react-native';
+import { Button, TextButton, MyText, RectangleButton } from '@components';
+import Page from '@components/Page/Page';
 import { observer } from 'mobx-react';
 import { useStores } from '@store';
 import style from '@styles/globalStyle';
 import { Actions } from 'react-native-router-flux';
 
+import LogoIcon from '../../image/logo.png';
+import { ScrollView } from 'react-native-gesture-handler';
+
+const { width } = Dimensions.get('window');
+
 const { container } = style;
 
 const Login = () => {
-    const { paramsUpdate, params,handleLogin } = useStores()['LoginStore'];
-    const { email, password } = params;
-    return (
-        <Page>
-            <View style={{ ...container }}>
-                <View style={{ marginTop: 40 }}>
-                    <Text style={{ fontSize: 30 }}>Login</Text>
-                </View>
-                <View style={{ marginVertical: 20 }}>
-                    <Input label={'email'}
-                           value={email}
-                           onChangeText={text => {
-                               paramsUpdate('email', text);
-                           }}/>
-                </View>
-                <View style={{ marginVertical: 20 }}>
-                    <Input label={'password'}
-                           value={password}
-                           onChangeText={text => {
-                               paramsUpdate('password', text);
-                           }}/>
-                </View>
-                <View style={{ marginVertical: 20,flexDirection:"row" }}>
-                    <Button onPress={()=>{Actions.replace('SignUp')}}> SignUp </Button>
-                    <Button onPress={()=>{handleLogin()}}> Login </Button>
-                </View>
-            </View>
-        </Page>
-    );
+  const { paramsUpdate, params, handleLogin } = useStores().LoginStore;
+  const { email, password } = params;
+
+  const [inputEmail, setInputEmail] = useState('');
+  const [inputPassword, setInputPassword] = useState('');
+
+  return (
+    <KeyboardAvoidingView
+      enabled={Platform.OS === 'ios' ? false : true}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
+    >
+      <Page>
+        <View style={{ flex: 1, backgroundColor: 'pink', justifyContent: 'flex-end', alignItems: 'center' }}>
+          <MyText style={{ fontSize: 36, fontWeight: '500', letterSpacing: 3 }}>
+            Hoja
+          </MyText>
+        </View>
+        <View style={{ flex: 1, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'flex-end', flexDirection: 'row' }}>
+          <TextButton>登入</TextButton>
+          <View style={{ width: 20 }} />
+          <TextButton>註冊</TextButton>
+        </View>
+        <View style={{ flex: 3, alignItems: 'center', marginTop: 30, width: width / 2, backgroundColor: 'pink', alignSelf: 'center' }}>
+        <View style={styles.searchSection}>
+          <Image style={styles.searchIcon} source={LogoIcon} />
+          <TextInput
+            keyboardType='email-address'
+            autoCorrect={false}
+            style={styles.input}
+            placeholder="Email"
+            onChangeText={(tex) => setInputEmail(tex)}
+            underlineColorAndroid="transparent"
+          />
+        </View>
+
+        <View style={[styles.searchSection, { marginTop: 15 }]}>
+          <Image style={styles.searchIcon} source={LogoIcon} />
+          <TextInput
+            secureTextEntry={true}
+            style={styles.input}
+            placeholder="Password"
+            autoCorrect={false}
+            onChangeText={(tex) => setInputPassword(tex)}
+            underlineColorAndroid="transparent"
+          />
+        </View>
+
+        <View style={{ marginTop: 15 }}>
+          <RectangleButton
+            disabled={false}
+            buttonColor={'black'}
+            textColor={'#fff'}
+            onPress={() => alert('Test')}
+          >
+            登入
+          </RectangleButton>
+        </View>
+      </View>
+      {/* <View style={{...container}}>
+        <View style={{marginTop: 40}}>
+          <Text style={{fontSize: 30}}>Login</Text>
+        </View>
+        <View style={{marginVertical: 20}}>
+          <Input
+            label={'email'}
+            value={email}
+            onChangeText={(text) => paramsUpdate('email', text)}
+          />
+        </View>
+        <View style={{marginVertical: 20}}>
+          <Input
+            label={'password'}
+            value={password}
+            onChangeText={(text) => paramsUpdate('password', text)}
+          />
+        </View>
+        <View style={{marginVertical: 20, flexDirection: 'row'}}>
+          <Button
+            onPress={() => {
+              Actions.replace('SignUp');
+            }}>
+            {' '}
+            SignUp{' '}
+          </Button>
+          <Button
+            onPress={() => {
+              handleLogin();
+            }}>
+            {' '}
+            Login{' '}
+          </Button>
+        </View>
+      </View> */}
+    </Page>
+    </KeyboardAvoidingView>
+  );
 };
+
+const styles = StyleSheet.create({
+  searchSection: {
+    // flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderWidth: 0.5,
+    borderColor: 'gray',
+    paddingLeft: 10,
+  },
+  searchIcon: {
+    width: 20,
+    height: 20,
+    marginLeft: 20,
+  },
+  input: {
+    fontSize: 18,
+    height: 50,
+    paddingHorizontal: 10,
+    width: '100%',
+    backgroundColor: '#fff',
+    color: '#424242',
+  },
+});
+
 export default observer(Login);
 // const styles = StyleSheet.create({});
