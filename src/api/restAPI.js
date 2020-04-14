@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { Actions } from 'react-native-router-flux';
 
 const endPoint = API_ENDPOINT;
+console.log('API_ENDPOINT',API_ENDPOINT)
 export const post = async (url, data, debug = false, timeout = 6000) => {
     const token = await AsyncStorage.getItem('token');
     const serverUrl = endPoint;

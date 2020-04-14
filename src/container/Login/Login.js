@@ -16,14 +16,12 @@ const { container } = style;
 
 const Login = () => {
   const { paramsUpdate, params, handleLogin } = useStores().LoginStore;
-  const { email, password } = params;
+  const { email, password,phoneNumber } = params;
 
-  const [inputEmail, setInputEmail] = useState('');
-  const [inputPassword, setInputPassword] = useState('');
 
   return (
     <KeyboardAvoidingView
-      enabled={Platform.OS === 'ios' ? false : true}
+      enabled={Platform.OS !== 'ios'}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{ flex: 1 }}
     >
@@ -44,9 +42,10 @@ const Login = () => {
           <TextInput
             keyboardType='email-address'
             autoCorrect={false}
+            value={email}
             style={styles.input}
             placeholder="Email"
-            onChangeText={(tex) => setInputEmail(tex)}
+            onChangeText={(value) => {paramsUpdate('email',value)}}
             underlineColorAndroid="transparent"
           />
         </View>
@@ -56,9 +55,10 @@ const Login = () => {
           <TextInput
             secureTextEntry={true}
             style={styles.input}
+            value={password}
             placeholder="Password"
             autoCorrect={false}
-            onChangeText={(tex) => setInputPassword(tex)}
+            onChangeText={(value) => {paramsUpdate('password',value)}}
             underlineColorAndroid="transparent"
           />
         </View>
@@ -68,7 +68,7 @@ const Login = () => {
             disabled={false}
             buttonColor={'black'}
             textColor={'#fff'}
-            onPress={() => alert('Test')}
+            onPress={()=>{handleLogin()}}
           >
             登入
           </RectangleButton>
