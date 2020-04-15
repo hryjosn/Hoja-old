@@ -15,12 +15,12 @@ export const Button = ({ onPress, children, style }) => {
     );
 };
 
-export const TextButton = ({ onPress, children }) => {
-    return (
-        <TouchableOpacity onPress={onPress}>
-            <MyText style={styles.textButtonTextStyle}>{children}</MyText>
-        </TouchableOpacity>
-    );
+export const TextButton = ({onPress, color, children, fontSize}) => {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <MyText style={[styles.textButtonTextStyle, { color, fontSize }]}>{children}</MyText>
+    </TouchableOpacity>    
+  );
 };
 
 export const RectangleButton = ({ onPress, children, buttonColor, textColor, disabled = false }) => {
