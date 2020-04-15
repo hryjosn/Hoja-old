@@ -7,7 +7,6 @@ import { useStores } from '@store';
 import style from '@styles/globalStyle';
 import { Actions } from 'react-native-router-flux';
 
-import LogoIcon from '../../image/logo.png';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const { width } = Dimensions.get('window');
@@ -38,7 +37,7 @@ const Login = () => {
         </View>
         <View style={{ flex: 3, alignItems: 'center', marginTop: 30, width: width / 2, backgroundColor: 'pink', alignSelf: 'center' }}>
         <View style={styles.searchSection}>
-          <Image style={styles.searchIcon} source={LogoIcon} />
+          {/*<Image style={styles.searchIcon} source={LogoIcon} />*/}
           <TextInput
             keyboardType='email-address'
             autoCorrect={false}
@@ -51,7 +50,7 @@ const Login = () => {
         </View>
 
         <View style={[styles.searchSection, { marginTop: 15 }]}>
-          <Image style={styles.searchIcon} source={LogoIcon} />
+          {/*<Image style={styles.searchIcon} source={LogoIcon} />*/}
           <TextInput
             secureTextEntry={true}
             style={styles.input}
@@ -65,7 +64,6 @@ const Login = () => {
 
         <View style={{ marginTop: 15 }}>
           <RectangleButton
-            disabled={false}
             buttonColor={'black'}
             textColor={'#fff'}
             onPress={()=>{handleLogin()}}
@@ -141,4 +139,3 @@ const styles = StyleSheet.create({
 });
 
 export default observer(Login);
-// const styles = StyleSheet.create({});

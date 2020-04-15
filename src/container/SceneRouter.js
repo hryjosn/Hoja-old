@@ -27,7 +27,7 @@ const SceneRouter = () => {
       <Stack key="root">
         <Scene key="Auth" hideNavBar initial>
           <Scene key="Init" component={Init} hideNavBar initial />
-          <Scene key="Login" component={Home} hideNavBar />
+          <Scene key="Login" component={Login} hideNavBar />
           <Scene key="SignUp" component={SignUp} hideNavBar />
         </Scene>
         <Scene key="Main" hideNavBar>
@@ -52,7 +52,7 @@ const SceneRouter = () => {
                 key="Home"
                 component={Home}
                 hideNavBar
-                sceneStyle={{marginBottom: 50}}
+
                 initial
               />
             </Scene>
@@ -61,7 +61,7 @@ const SceneRouter = () => {
                 key="PersonalData"
                 component={Profile}
                 hideNavBar
-                sceneStyle={{marginBottom: 50}}
+
                 initial
               />
             </Scene>
