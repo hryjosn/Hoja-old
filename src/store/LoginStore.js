@@ -32,8 +32,10 @@ cd
         const res = await callLoginUser({ email, password });
         if (res) {
             const { token } = res;
-            this.assignData({ token });
-            await AsyncStorage.setItem('token', token);
+            if(token){
+                this.assignData({ token });
+                await AsyncStorage.setItem('token', token);
+            }
             Actions.replace("Main")
 
         } else {
