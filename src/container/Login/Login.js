@@ -16,7 +16,7 @@ const { container } = style;
 
 const Login = () => {
   const { paramsUpdate, params, handleLogin } = useStores().LoginStore;
-  const { email, password } = params;
+  const { email, password,phoneNumber } = params;
 
   const [inputEmail, setInputEmail] = useState('');
   const [inputPhone, setInputPhone] = useState('');
@@ -95,13 +95,14 @@ const Login = () => {
         </View>
         <View style={{ flex: 3, alignItems: 'center', marginTop: 30, width: width / 2, backgroundColor: 'pink', alignSelf: 'center' }}>
         <View style={styles.searchSection}>
-          <Image style={styles.searchIcon} source={LogoIcon} />
+          {/*<Image style={styles.searchIcon} source={LogoIcon} />*/}
           <TextInput
             keyboardType='email-address'
             autoCorrect={false}
+            value={email}
             style={styles.input}
             placeholder="Email"
-            onChangeText={(tex) => setInputEmail(tex)}
+            onChangeText={(value) => {paramsUpdate('email',value)}}
             underlineColorAndroid="transparent"
           />
         </View>
@@ -109,23 +110,23 @@ const Login = () => {
         {renderPhontTextInput()}
 
         <View style={[styles.searchSection, { marginTop: 15 }]}>
-          <Image style={styles.searchIcon} source={LogoIcon} />
+          {/*<Image style={styles.searchIcon} source={LogoIcon} />*/}
           <TextInput
             secureTextEntry={true}
             style={styles.input}
+            value={password}
             placeholder="Password"
             autoCorrect={false}
-            onChangeText={(tex) => setInputPassword(tex)}
+            onChangeText={(value) => {paramsUpdate('password',value)}}
             underlineColorAndroid="transparent"
           />
         </View>
 
         <View style={{ marginTop: 15 }}>
           <RectangleButton
-            disabled={false}
             buttonColor={'black'}
             textColor={'#fff'}
-            onPress={() => alert('Test')}
+            onPress={()=>{handleLogin()}}
           >
             {Translate.login}
           </RectangleButton>

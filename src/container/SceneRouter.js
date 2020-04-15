@@ -52,7 +52,7 @@ const SceneRouter = () => {
                 key="Home"
                 component={Home}
                 hideNavBar
-                sceneStyle={{marginBottom: 50}}
+
                 initial
               />
             </Scene>
@@ -61,7 +61,7 @@ const SceneRouter = () => {
                 key="PersonalData"
                 component={Profile}
                 hideNavBar
-                sceneStyle={{marginBottom: 50}}
+
                 initial
               />
             </Scene>
