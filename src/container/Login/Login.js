@@ -6,9 +6,9 @@ import { observer } from 'mobx-react';
 import { useStores } from '@store';
 import style from '@styles/globalStyle';
 import { Actions } from 'react-native-router-flux';
-
+import { checkInput } from '../../helpers';
+import { Translate } from '../../translations';
 import LogoIcon from '../../image/logo.png';
-import { ScrollView } from 'react-native-gesture-handler';
 
 const { width } = Dimensions.get('window');
 
@@ -19,14 +19,57 @@ const Login = () => {
   const { email, password } = params;
 
   const [inputEmail, setInputEmail] = useState('');
+  const [inputPhone, setInputPhone] = useState('');
   const [inputPassword, setInputPassword] = useState('');
+  const [selectedLogin, setSelectedLogin] = useState(true);
+  const [selectedRegister, setSelectedRegister] = useState(false);
+
+  const onPress = (buttonType) => {
+    if (buttonType === 'Login') {
+      setSelectedLogin(true);
+      setSelectedRegister(false);
+
+      return;
+    }
+
+    setSelectedLogin(false);
+    setSelectedRegister(true);
+  };
+
+  const renderPhontTextInput = () => {
+    if (selectedRegister) {
+      return (
+        <View style={[styles.searchSection, { marginTop: 15 }]}>
+          <Image style={styles.searchIcon} source={LogoIcon} />
+          <TextInput
+            secureTextEntry={true}
+            style={styles.input}
+            placeholder="Phone"
+            autoCorrect={false}
+            onChangeText={(tex) => setInputPhone(tex)}
+            underlineColorAndroid="transparent"
+          />
+        </View>
+      );
+    }
+
+    return null;
+  };
+
+  const loginButtonColor = selectedLogin ? 'black' : 'gray';
+  const loginTextFontSize = selectedLogin ? 21 : 16;
+  const registerButtonColor = selectedRegister ? 'black' : 'gray';
+  const registerFontSize = selectedRegister ? 21 : 16;
+
+  console.log('inputEmail =>', inputEmail);
+  console.log('test validate', checkInput(inputEmail, 'isInt'));
 
   return (
-    <KeyboardAvoidingView
-      enabled={Platform.OS === 'ios' ? false : true}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{ flex: 1 }}
-    >
+    // <KeyboardAvoidingView
+    //   enabled={Platform.OS === 'ios' ? false : true}
+    //   behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    //   style={{ flex: 1 }}
+    // >
       <Page>
         <View style={{ flex: 1, backgroundColor: 'pink', justifyContent: 'flex-end', alignItems: 'center' }}>
           <MyText style={{ fontSize: 36, fontWeight: '500', letterSpacing: 3 }}>
@@ -34,9 +77,21 @@ const Login = () => {
           </MyText>
         </View>
         <View style={{ flex: 1, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'flex-end', flexDirection: 'row' }}>
-          <TextButton>登入</TextButton>
+          <TextButton 
+            onPress={() => onPress('Login')} 
+            color={loginButtonColor}
+            fontSize={loginTextFontSize}
+          >
+            {Translate.login}
+          </TextButton>
           <View style={{ width: 20 }} />
-          <TextButton>註冊</TextButton>
+          <TextButton 
+            onPress={() => onPress('Register')} 
+            color={registerButtonColor}
+            fontSize={registerFontSize}
+          >
+            {Translate.register}
+          </TextButton>
         </View>
         <View style={{ flex: 3, alignItems: 'center', marginTop: 30, width: width / 2, backgroundColor: 'pink', alignSelf: 'center' }}>
         <View style={styles.searchSection}>
@@ -50,6 +105,8 @@ const Login = () => {
             underlineColorAndroid="transparent"
           />
         </View>
+
+        {renderPhontTextInput()}
 
         <View style={[styles.searchSection, { marginTop: 15 }]}>
           <Image style={styles.searchIcon} source={LogoIcon} />
@@ -70,7 +127,7 @@ const Login = () => {
             textColor={'#fff'}
             onPress={() => alert('Test')}
           >
-            登入
+            {Translate.login}
           </RectangleButton>
         </View>
       </View>
@@ -110,7 +167,7 @@ const Login = () => {
         </View>
       </View> */}
     </Page>
-    </KeyboardAvoidingView>
+    // </KeyboardAvoidingView>
   );
 };
 
@@ -141,4 +198,3 @@ const styles = StyleSheet.create({
 });
 
 export default observer(Login);
-// const styles = StyleSheet.create({});

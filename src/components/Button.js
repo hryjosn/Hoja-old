@@ -15,10 +15,10 @@ export const Button = ({onPress, children, style}) => {
   );
 };
 
-export const TextButton = ({onPress, children}) => {
+export const TextButton = ({onPress, color, children, fontSize}) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <MyText style={styles.textButtonTextStyle}>{children}</MyText>
+      <MyText style={[styles.textButtonTextStyle, { color, fontSize }]}>{children}</MyText>
     </TouchableOpacity>    
   );
 };

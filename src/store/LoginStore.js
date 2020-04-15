@@ -4,18 +4,19 @@ import auth from '@react-native-firebase/auth';
 import {Actions} from 'react-native-router-flux';
 
 const initState = {
-    isFetching: false,
-    userName: '',
-    member_account: '',
-    userId: '',
-    valid: false,
-    sessionToken: null,
-    login_flag: false,
-    avatar: '',
-    params: {
-        email: '',
-        password: '',
-    },
+  isFetching: false,
+  userName: '',
+  member_account: '',
+  userId: '',
+  valid: false,
+  sessionToken: null,
+  login_flag: false,
+  avatar: '',
+  params: {
+    email: '',
+    password: '',
+    phone: ''
+  },
 };
 
 class LoginStore extends storeAction {

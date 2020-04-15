@@ -79,7 +79,8 @@ export class PackageValidator {
       this.isPackageNo(_.get(selectedPackage, 'packageNo')) &&
       this.isPackageName(_.get(selectedPackage, 'packageName')) &&
       this.isPrice(_.get(selectedPackage, 'price')) &&
-      this.isQuantity(_.get(selectedPackage, 'quantity'));
+      this.isQuantity(_.get(selectedPackage, 'quantity'))
+    );
   };
 }
 
@@ -146,7 +147,8 @@ export class BrokerValidator {
       this.isAddressTown(_.get(broker, 'address_town')) &&
       this.isAddressContent(_.get(broker, 'address_content')) &&
       this.isAddressCode(_.get(broker, 'address_code')) &&
-      this.isPhone(_.get(broker, 'phone'));
+      this.isPhone(_.get(broker, 'phone'))
+    );
   };
 }
 
