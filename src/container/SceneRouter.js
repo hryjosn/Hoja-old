@@ -25,12 +25,12 @@ const SceneRouter = () => {
   return (
     <Router>
       <Stack key="root">
-        <Scene key="Auth" hideNavBar initial>
+        <Scene key="Auth" hideNavBar >
           <Scene key="Init" component={Init} hideNavBar initial />
           <Scene key="Login" component={Login} hideNavBar />
           <Scene key="SignUp" component={SignUp} hideNavBar />
         </Scene>
-        <Scene key="Main" hideNavBar>
+        <Scene key="Main" hideNavBar initial>
           <Scene
             key="tabBar"
             tabs
@@ -58,11 +58,9 @@ const SceneRouter = () => {
             </Scene>
             <Scene key="tab1" title={'會員'} icon={TabIcon} iconName={'user'}>
               <Scene
-                key="PersonalData"
+                key="Profile"
                 component={Profile}
                 hideNavBar
-
-                initial
               />
             </Scene>
           </Scene>

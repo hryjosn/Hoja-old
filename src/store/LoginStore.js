@@ -26,21 +26,25 @@ class LoginStore extends storeAction {
         this.initState = initState;
         extendObservable(this, initState);
     }
-cd
     @action handleLogin = async () => {
         const { email, password } = this.params;
-        const res = await callLoginUser({ email, password });
-        if (res) {
-            const { token } = res;
-            if(token){
-                this.assignData({ token });
-                await AsyncStorage.setItem('token', token);
-            }
-            Actions.replace("Main")
+        try{
+            const res = await callLoginUser({ email, password });
+            if (res) {
+                const { token } = res;
+                if(token){
+                    this.assignData({ token });
+                    await AsyncStorage.setItem('token', token);
+                }
+                Actions.replace("Main")
 
-        } else {
-            alert("登入失敗")
+            } else {
+                alert("登入失敗")
+            }
+        }catch (e) {
+            console.log("error:",e.response);
         }
+
     };
     @action handleSignOut = async () => {
         try {
