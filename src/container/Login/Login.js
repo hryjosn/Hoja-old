@@ -8,7 +8,7 @@ import style from '@styles/globalStyle';
 import { Actions } from 'react-native-router-flux';
 import { checkInput } from '../../helpers';
 import { Translate } from '../../translations';
-import LogoIcon from '../../image/logo.png';
+// import LogoIcon from '../../image/logo.png';
 
 const { width } = Dimensions.get('window');
 
@@ -40,7 +40,7 @@ const Login = () => {
     if (selectedRegister) {
       return (
         <View style={[styles.searchSection, { marginTop: 15 }]}>
-          <Image style={styles.searchIcon} source={LogoIcon} />
+          {/* <Image style={styles.searchIcon} source={LogoIcon} /> */}
           <TextInput
             secureTextEntry={true}
             style={styles.input}
