@@ -4,26 +4,29 @@ import Page from '@components/Page/Page';
 import { observer } from 'mobx-react';
 import { useStores } from '@store/store';
 import { Actions } from 'react-native-router-flux';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Profile = () => {
 
     return (
         <Page>
             <View style={styles.container}>
-                <View style={styles.contentStyle}>
-                    <Text style={styles.headerStyle}>編輯個人資料</Text>
-                    <TouchableOpacity onPress={() => {
-                        Actions.pop();
-                    }}>
-                        <Text style={{ fontSize: 20, marginVertical: 20 }}>返回</Text>
-                    </TouchableOpacity>
-                    <View style={{ marginVertical: 20 }}>
-                        <Text style={styles.descriptionStyle}>姓名</Text>
-                        <Text style={styles.descriptionStyle}>用戶名稱</Text>
-                        <Text style={styles.descriptionStyle}>網站</Text>
-                        <Text style={styles.descriptionStyle}>個人簡介</Text>
-                    </View>
+                <Text style={styles.headerStyle}>編輯個人資料</Text>
+                <TouchableOpacity onPress={() => {
+                    Actions.pop();
+                }}>
+                    <Text style={{ fontSize: 20, marginVertical: 20 }}>返回</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    Actions.push('MenuList');
+                }}>
+                    <Text style={{ fontSize: 20, marginVertical: 20 }}>菜單</Text>
+                </TouchableOpacity>
+                <View style={{ marginVertical: 20 }}>
+                    <Text style={styles.descriptionStyle}>姓名</Text>
+                    <Text style={styles.descriptionStyle}>用戶名稱</Text>
+                    <Text style={styles.descriptionStyle}>網站</Text>
+                    <Text style={styles.descriptionStyle}>個人簡介</Text>
                 </View>
             </View>
         </Page>

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   rateBoxContainer: {
@@ -27,12 +27,33 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
   container: {
-    paddingBottom: 5,
-    paddingTop: 10,
-    borderBottomWidth: 1,
-    justifyContent: 'space-between',
+    marginHorizontal: 30,
+    marginTop: 30,
+    flex: 1,
+  },
+  headerStyle: {
+    color: '#555555',
+    fontSize: 26,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  contentStyle: {
+    borderWidth: 2,
+    marginTop: 15,
+    marginBottom: 5,
+    padding: 20,
+    borderTopColor: 'gray',
+    borderBottomColor: 'gray',
+    borderRightColor: 'gray',
+    borderLeftColor: 'gray',
+  },
+  descriptionStyle: {
+    fontSize: 16,
+    paddingVertical: 5,
+    color: '#7F7F7F',
+  },
+  rowStyle: {
     flexDirection: 'row',
-    borderBottomColor: '#D7D7D7',
-    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

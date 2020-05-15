@@ -6,6 +6,7 @@ import Login from '@container/Login';
 import SignUp from '@container/SignUp';
 import Profile from '@container/Profile';
 import Home from '@container/Home';
+import MenuList from '@container/MenuList';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const TabIcon = (props) => {
   let color = props.focused ? 'white' : '#7F7F7F';
@@ -60,6 +61,11 @@ const SceneRouter = () => {
               <Scene
                 key="Profile"
                 component={Profile}
+                hideNavBar
+              />
+              <Scene
+                key="MenuList"
+                component={MenuList}
                 hideNavBar
               />
             </Scene>
