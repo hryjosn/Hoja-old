@@ -8,87 +8,170 @@ import {
     View,
 } from 'react-native';
 import Page from '@components/Page/Page';
+import { Input } from '@components';
 import { foodSample } from '@image';
 import { useStores } from '@store';
 import { observer } from 'mobx-react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const AddMenuModal = () => {
-    const { updateData, visible } = useStores()['AddMenuModalStore'];
+    const { updateData, visible, paramsUpdate, params } = useStores()['AddMenuModalStore'];
+    const { name, price, introduction, keyWord } = params
+    const newMenu = false;
+
     return (
         <Modal visible={visible}>
             <Page isModal>
-                <ImageBackground source={foodSample} style={styles.image}>
-                    <TouchableOpacity onPress={() => {
-                        updateData('visible', false);
-                    }}>
-                        <Text style={{
-                            marginBottom: 20, marginTop: 20, marginHorizontal: 15,
-                            fontSize: 20, color: "white",
-                        }}>
-                            返回
-                        </Text>
-                    </TouchableOpacity>
-                    <View style={{
-                        ...styles.signboardStyle,
-                        padding: 10, alignSelf: "center", marginTop: 250,
-                        backgroundColor: "white", flexDirection: "row",
-                    }}>
-                        <View style={{ justifyContent: "center" }}>
-                            <TouchableOpacity onPress={() => {
 
+                {newMenu === false && (
+                    <>
+                        <TouchableOpacity onPress={() => {
+                            updateData('visible', false);
+                        }}>
+                            <Text style={{
+                                marginBottom: 20, marginTop: 20, marginHorizontal: 15,
+                                fontSize: 20, color: "white",
                             }}>
-                                <Icon name={'edit'} size={20} />
-                            </TouchableOpacity>
-                        </View>
-                        <Text style={{ ...styles.descriptionStyle, marginLeft: 10 }}>
-                            編輯圖片
-                            </Text>
-                    </View>
-                    <View style={styles.container}>
-                        <View style={{ marginBottom: 10 }}>
-                            <Text style={styles.descriptionStyle}>餐點名稱</Text>
-                            <Text style={{ fontSize: 20 }}>義式香雞藜麥飯</Text>
-                        </View>
-                        <View style={{ marginBottom: 10 }}>
-                            <Text style={styles.descriptionStyle}>單價</Text>
-                            <Text style={{ fontSize: 20 }}>$ 200</Text>
-                        </View>
-                        <View style={{ marginBottom: 10 }}>
-                            <Text style={styles.descriptionStyle}>簡介</Text>
-                            <Text style={{ fontSize: 20 }}>好吃義式香料雞肉</Text>
-                        </View>
-                        <View style={{ marginBottom: 10 }}>
-                            <Text style={styles.descriptionStyle}>分類關鍵字</Text>
-                            <View style={{ flexDirection: "row" }}>
-                                <View style={{ ...styles.signboardStyle, padding: 3, marginRight: 10 }}>
-                                    <Text>中式</Text>
-                                </View>
-                                <View style={{ ...styles.signboardStyle, padding: 3 }}>
-                                    <Text>西式</Text>
-                                </View>
-                            </View>
-                        </View>
+                                返回
+                        </Text>
+                        </TouchableOpacity>
                         <View style={{
                             ...styles.signboardStyle,
-                            padding: 10, alignSelf: "center",
+                            padding: 10, alignSelf: "center", marginTop: 250,
                             backgroundColor: "white", flexDirection: "row",
                         }}>
                             <View style={{ justifyContent: "center" }}>
-                                < TouchableOpacity onPress={() => {
+                                <TouchableOpacity onPress={() => {
 
                                 }}>
-                                    <Icon name={'plus'} size={20} />
+                                    <Icon name={'edit'} size={20} />
                                 </TouchableOpacity>
                             </View>
                             <Text style={{ ...styles.descriptionStyle, marginLeft: 10 }}>
-                                規格選項
+                                編輯圖片
                             </Text>
                         </View>
+                        <View style={styles.container}>
+                            <View style={{ marginBottom: 10 }}>
+                                <Text style={styles.descriptionStyle}>餐點名稱</Text>
+                                <Input
+                                    value={name}
+                                    maxLength={25}
+                                    placeholder={'請輸入菜名'}
+                                    onChangeText={text => {
+                                        paramsUpdate('name', text);
+                                    }} />
+                            </View>
+                            <View style={{ marginBottom: 10 }}>
+                                <Text style={styles.descriptionStyle}>單價</Text>
+                                <Text style={{ fontSize: 20 }}>$ 200</Text>
+                            </View>
+                            <View style={{ marginBottom: 10 }}>
+                                <Text style={styles.descriptionStyle}>簡介</Text>
+                                <Text style={{ fontSize: 20 }}>好吃義式香料雞肉</Text>
+                            </View>
+                            <View style={{ marginBottom: 10 }}>
+                                <Text style={styles.descriptionStyle}>分類關鍵字</Text>
+                                <View style={{ flexDirection: "row" }}>
+                                    <View style={{ ...styles.signboardStyle, padding: 3, marginRight: 10 }}>
+                                        <Text>中式</Text>
+                                    </View>
+                                    <View style={{ ...styles.signboardStyle, padding: 3 }}>
+                                        <Text>西式</Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={{
+                                ...styles.signboardStyle,
+                                padding: 10, alignSelf: "center",
+                                backgroundColor: "white", flexDirection: "row",
+                            }}>
+                                <View style={{ justifyContent: "center" }}>
+                                    < TouchableOpacity onPress={() => {
 
+                                    }}>
+                                        <Icon name={'plus'} size={20} />
+                                    </TouchableOpacity>
+                                </View>
+                                <Text style={{ ...styles.descriptionStyle, marginLeft: 10 }}>
+                                    規格選項
+                            </Text>
+                            </View>
+                        </View>
+                    </>
+                )}
 
-                    </View>
-                </ImageBackground>
+                {newMenu === true && (
+                    <ImageBackground source={foodSample} style={styles.image}>
+                        <TouchableOpacity onPress={() => {
+                            updateData('visible', false);
+                        }}>
+                            <Text style={{
+                                marginBottom: 20, marginTop: 20, marginHorizontal: 15,
+                                fontSize: 20, color: "white",
+                            }}>
+                                返回
+                        </Text>
+                        </TouchableOpacity>
+                        <View style={{
+                            ...styles.signboardStyle,
+                            padding: 10, alignSelf: "center", marginTop: 250,
+                            backgroundColor: "white", flexDirection: "row",
+                        }}>
+                            <View style={{ justifyContent: "center" }}>
+                                <TouchableOpacity onPress={() => {
+
+                                }}>
+                                    <Icon name={'edit'} size={20} />
+                                </TouchableOpacity>
+                            </View>
+                            <Text style={{ ...styles.descriptionStyle, marginLeft: 10 }}>
+                                編輯圖片
+                            </Text>
+                        </View>
+                        <View style={styles.container}>
+                            <View style={{ marginBottom: 10 }}>
+                                <Text style={styles.descriptionStyle}>餐點名稱</Text>
+                                <Text style={{ fontSize: 20 }}>義式香雞藜麥飯</Text>
+                            </View>
+                            <View style={{ marginBottom: 10 }}>
+                                <Text style={styles.descriptionStyle}>單價</Text>
+                                <Text style={{ fontSize: 20 }}>$ 200</Text>
+                            </View>
+                            <View style={{ marginBottom: 10 }}>
+                                <Text style={styles.descriptionStyle}>簡介</Text>
+                                <Text style={{ fontSize: 20 }}>好吃義式香料雞肉</Text>
+                            </View>
+                            <View style={{ marginBottom: 10 }}>
+                                <Text style={styles.descriptionStyle}>分類關鍵字</Text>
+                                <View style={{ flexDirection: "row" }}>
+                                    <View style={{ ...styles.signboardStyle, padding: 3, marginRight: 10 }}>
+                                        <Text>中式</Text>
+                                    </View>
+                                    <View style={{ ...styles.signboardStyle, padding: 3 }}>
+                                        <Text>西式</Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={{
+                                ...styles.signboardStyle,
+                                padding: 10, alignSelf: "center",
+                                backgroundColor: "white", flexDirection: "row",
+                            }}>
+                                <View style={{ justifyContent: "center" }}>
+                                    < TouchableOpacity onPress={() => {
+
+                                    }}>
+                                        <Icon name={'plus'} size={20} />
+                                    </TouchableOpacity>
+                                </View>
+                                <Text style={{ ...styles.descriptionStyle, marginLeft: 10 }}>
+                                    規格選項
+                            </Text>
+                            </View>
+                        </View>
+                    </ImageBackground>
+                )}
             </Page>
         </Modal>
     );

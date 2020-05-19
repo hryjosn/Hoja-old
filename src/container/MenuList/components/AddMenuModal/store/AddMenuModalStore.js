@@ -1,18 +1,22 @@
-import {action, extendObservable} from 'mobx';
+import { action, extendObservable } from 'mobx';
 import storeAction from '@store/storeAction';
 
 const initState = {
-  visible: false,
-  params: {
-  },
+    visible: false,
+    params: {
+        name: "",
+        price: 0,
+        introduction: "",
+        keyWord: [],
+    },
 };
 
 class AddMenuModalStore extends storeAction {
-  constructor() {
-    super();
-    this.initState = initState;
-    extendObservable(this, initState);
-  }
+    constructor() {
+        super();
+        this.initState = initState;
+        extendObservable(this, initState);
+    }
 }
 
 export default new AddMenuModalStore();
