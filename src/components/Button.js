@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Dimensions } from 'react-native';
-import { MyText } from './Text';
+import { MyText } from './MyText';
 const { width } = Dimensions.get('window');
 export const Button = ({ onPress, children, style }) => {
   return (
