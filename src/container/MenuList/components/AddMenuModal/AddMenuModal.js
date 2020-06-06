@@ -26,21 +26,24 @@ const AddMenuModal = () => {
       <Page isModal>
         {newMenu === false && (
           <>
-            <TouchableOpacity
-              onPress={() => {
-                updateData('visible', false);
-              }}>
-              <Text
-                style={{
-                  marginBottom: 20,
-                  marginTop: 20,
-                  marginHorizontal: 15,
-                  fontSize: 20,
-                  color: 'white',
+            <View style={{ alignItems: 'flex-start' }}>
+              <TouchableOpacity
+                onPress={() => {
+                  updateData('visible', false);
                 }}>
-                返回
-              </Text>
-            </TouchableOpacity>
+                <Text
+                  style={{
+                    marginBottom: 20,
+                    marginTop: 20,
+                    marginHorizontal: 15,
+                    fontSize: 20,
+                    color: 'black',
+                  }}>
+                  返回
+                </Text>
+              </TouchableOpacity>
+            </View>
+
             <View
               style={{
                 ...styles.signboardStyle,
