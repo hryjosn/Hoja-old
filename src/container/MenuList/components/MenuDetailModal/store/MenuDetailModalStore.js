@@ -11,7 +11,7 @@ const initState = {
     },
 };
 
-class AddMenuModalStore extends storeAction {
+class MenuDetailModalStore extends storeAction {
     constructor() {
         super();
         this.initState = initState;
@@ -19,4 +19,4 @@ class AddMenuModalStore extends storeAction {
     }
 }
 
-export default new AddMenuModalStore();
+export default new MenuDetailModalStore();

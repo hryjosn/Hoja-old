@@ -6,10 +6,10 @@ import { useStores } from '@store/store';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { restaurantSample } from '@image';
-import AddMenuModal from '@container/MenuList/components/AddMenuModal';
+import MenuDetailModal from '@container/MenuList/components/MenuDetailModal';
 
 const MenuList = () => {
-    const { updateData, visible } = useStores()['AddMenuModalStore'];
+    const { updateData, visible } = useStores()['MenuDetailModalStore'];
 
     return (
         <Page>
@@ -136,7 +136,7 @@ const MenuList = () => {
                     </View>
                 </View>
             </View>
-            <AddMenuModal />
+            <MenuDetailModal />
         </Page >
 
     );

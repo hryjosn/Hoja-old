@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, StyleSheet, Platform } from 'react-native';
+import {Text, StyleSheet, Platform} from 'react-native';
 
 export const MyText = (props) => {
   return (
-    <Text style={{ ...props.style, ...styles.fontStyle }} {...props}>
+    <Text style={{...props.style, ...styles.fontStyle}} {...props}>
       {props.children}
     </Text>
   );
@@ -12,8 +12,8 @@ export const MyText = (props) => {
 const styles = StyleSheet.create({
   fontStyle: {
     ...Platform.select({
-      ios: { fontFamily: 'PingFang TC' },
-      android: { fontFamily: 'sans-serif' },
+      ios: {fontFamily: 'PingFang TC'},
+      android: {fontFamily: 'sans-serif'},
     }),
   },
 });
