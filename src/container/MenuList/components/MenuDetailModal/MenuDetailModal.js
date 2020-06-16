@@ -16,9 +16,12 @@ import { observer } from 'mobx-react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const MenuDetailModal = () => {
-    const { updateData, visible, paramsUpdate, params } = useStores()[
-        'MenuDetailModalStore'
-        ];
+    const {
+        updateData,
+        visible,
+        paramsUpdate,
+        params,
+    } = useStores().MenuDetailModalStore;
     const { name, price, introduction, keyWord } = params;
 
     return (
@@ -39,7 +42,6 @@ const MenuDetailModal = () => {
                             返回
                         </Text>
                     </TouchableOpacity>
-
                 </ImageBackground>
                 {/*<View*/}
                 {/*    style={{*/}
@@ -115,8 +117,6 @@ const MenuDetailModal = () => {
                 {/*        </Text>*/}
                 {/*    </View>*/}
                 {/*</View>*/}
-
-
             </SafeAreaView>
         </Modal>
     );

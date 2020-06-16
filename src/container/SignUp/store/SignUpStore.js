@@ -20,7 +20,7 @@ const initState = {
 class SignUpStore extends storeAction {
     constructor() {
         super();
-        this.initState = initState
+        this.initState = initState;
         extendObservable(this, initState);
     }
 
@@ -29,7 +29,7 @@ class SignUpStore extends storeAction {
         try {
             await auth().createUserWithEmailAndPassword(email, password);
             alert('User account created & signed in!');
-            Actions.replace('Auth')
+            Actions.replace('Auth');
             this.reset();
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {

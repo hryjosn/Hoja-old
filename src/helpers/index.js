@@ -1,4 +1,4 @@
-import {isIphoneX, ifIphoneX} from './IPhoneXDetector';
+import { isIphoneX, ifIphoneX } from './IPhoneXDetector';
 
 export * from './helpers';
-export {isIphoneX, ifIphoneX};
+export { isIphoneX, ifIphoneX };

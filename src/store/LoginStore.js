@@ -28,23 +28,21 @@ class LoginStore extends storeAction {
     }
     @action handleLogin = async () => {
         const { email, password } = this.params;
-        try{
+        try {
             const res = await callLoginUser({ email, password });
             if (res) {
                 const { token } = res;
-                if(token){
+                if (token) {
                     this.assignData({ token });
                     await AsyncStorage.setItem('token', token);
                 }
-                Actions.replace("Main")
-
+                Actions.replace('Main');
             } else {
-                alert("登入失敗")
+                alert('登入失敗');
             }
-        }catch (e) {
-            console.log("error:",e.response);
+        } catch (e) {
+            console.log('error:', e.response);
         }
-
     };
     @action handleSignOut = async () => {
         try {
@@ -52,9 +50,9 @@ class LoginStore extends storeAction {
             if (asyncStorageKeys.length > 0) {
                 AsyncStorage.clear();
             }
-            Actions.replace("Auth");
-        } catch(e) {
-            alert("登出失敗:",e)
+            Actions.replace('Auth');
+        } catch (e) {
+            alert('登出失敗:', e);
         }
     };
 }

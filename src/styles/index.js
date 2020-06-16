@@ -1,2 +1,2 @@
 import globalStyles from './globalStyle';
-export {globalStyles};
+export { globalStyles };

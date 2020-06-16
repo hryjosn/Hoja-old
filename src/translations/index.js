@@ -7,7 +7,7 @@ import { zh } from './zh';
 // let LocalizedStrings  = require ('react-native-localization');
 
 export const Translate = new LocalizedStrings({
-  "en-US": enUs,
-  en: en,
-  zh: zh
+    'en-US': enUs,
+    en: en,
+    zh: zh,
 });

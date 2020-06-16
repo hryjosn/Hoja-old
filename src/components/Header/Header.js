@@ -8,8 +8,8 @@ import { useStores } from '@store';
 import Text from '../Text';
 
 const Header = ({ headerText, Right, backFunction, nav }) => {
-    const { onChangeMenu } = useStores()['LayoutStore'];
-    const { init } = useStores()['InitStore'];
+    const { onChangeMenu } = useStores().LayoutStore;
+    const { init } = useStores().InitStore;
 
     return (
         <View
@@ -45,10 +45,9 @@ const Header = ({ headerText, Right, backFunction, nav }) => {
 };
 export default observer(Header);
 
-
 const styles = StyleSheet.create({
-    emptyBox:{
-        width: 45
+    emptyBox: {
+        width: 45,
     },
     container: {
         flexDirection: 'row',

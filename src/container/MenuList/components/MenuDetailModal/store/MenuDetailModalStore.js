@@ -4,9 +4,9 @@ import storeAction from '@store/storeAction';
 const initState = {
     visible: false,
     params: {
-        name: "",
+        name: '',
         price: 0,
-        introduction: "",
+        introduction: '',
         keyWord: [],
     },
 };

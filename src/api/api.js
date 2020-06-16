@@ -3,10 +3,10 @@ import { post } from './restAPI';
 /**
  * 會員登入 [POST]
  */
-export const callLoginUser = (postData) => post(`login`, postData);
+export const callLoginUser = (postData) => post('login', postData);
 /**
  * 會員登出 [POST]
  */
-export const callLogOutUser = (postData) => post(`logout`, postData);
+export const callLogOutUser = (postData) => post('logout', postData);
 
 /** -------------------------- 登入 / 登出 end -------------------------- */

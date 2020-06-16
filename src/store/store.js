@@ -11,10 +11,4 @@ function useStores() {
     return React.useContext(MobXProviderContext);
 }
 
-export {
-    useStores,
-    HomeStore,
-    LoginStore,
-    SignUpStore,
-    MenuDetailModalStore,
-};
+export { useStores, HomeStore, LoginStore, SignUpStore, MenuDetailModalStore };

@@ -1,4 +1,4 @@
 export const enUs = {
-  login: "Login",
-  register: "Register"
+    login: 'Login',
+    register: 'Register',
 };
