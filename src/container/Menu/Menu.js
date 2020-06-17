@@ -13,9 +13,9 @@ import { useStores } from '@store/store';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { restaurantSample } from '@image';
-import MenuDetailModal from '@container/MenuList/components/MenuDetailModal';
+import MenuDetailModal from '@container/Menu/components/MenuDetailModal';
 
-const MenuList = () => {
+const Menu = () => {
     const { updateData, visible } = useStores().MenuDetailModalStore;
 
     return (
@@ -275,7 +275,7 @@ const MenuList = () => {
     );
 };
 
-export default observer(MenuList);
+export default observer(Menu);
 
 const styles = StyleSheet.create({
     container: {

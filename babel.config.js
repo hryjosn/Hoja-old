@@ -14,11 +14,12 @@ module.exports = {
             'module-resolver',
             {
                 root: ['./src'],
-                extensions: ['.ios.js', '.android.js', '.js', '.json'],
+                extensions: ['.js', '.json'],
                 alias: {
-                    '@container': './src/container',
+                    '@translations': './src/translations',
                     '@styles': './src/styles',
                     '@components': './src/components',
+                    '@container': './src/container',
                     '@store': './src/store',
                     '@api': './src/api/api',
                     '@constants': './src/constants',

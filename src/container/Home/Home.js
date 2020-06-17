@@ -19,21 +19,7 @@ const Home = () => {
     return (
         <Page>
             <View style={styles.container}>
-                <TouchableOpacity
-                    onPress={() => {
-                        Actions.push('Profile');
-                    }}>
-                    <Icon name={'user-o'} size={35} />
-                </TouchableOpacity>
-                <Text style={{ fontSize: 20, marginVertical: 20 }}>文字</Text>
-                <RectangleButton
-                    buttonColor={'black'}
-                    textColor={'white'}
-                    onPress={() => {
-                        handleSignOut();
-                    }}>
-                    登出
-                </RectangleButton>
+
             </View>
         </Page>
     );

@@ -6,7 +6,7 @@ import Login from '@container/Login';
 import SignUp from '@container/SignUp';
 import Profile from '@container/Profile';
 import Home from '@container/Home';
-import MenuList from '@container/MenuList';
+import Menu from '@container/Menu';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const TabIcon = (props) => {
     let color = props.focused ? 'white' : '#7F7F7F';
@@ -26,12 +26,12 @@ const SceneRouter = () => {
     return (
         <Router>
             <Stack key="root">
-                <Scene key="Auth" hideNavBar>
+                <Scene key="Auth" hideNavBar initial>
                     <Scene key="Init" component={Init} hideNavBar initial />
                     <Scene key="Login" component={Login} hideNavBar />
                     <Scene key="SignUp" component={SignUp} hideNavBar />
                 </Scene>
-                <Scene key="Main" hideNavBar initial>
+                <Scene key="Main" hideNavBar >
                     <Scene
                         key="tabBar"
                         tabs
@@ -67,8 +67,8 @@ const SceneRouter = () => {
                                 hideNavBar
                             />
                             <Scene
-                                key="MenuList"
-                                component={MenuList}
+                                key="Menu"
+                                component={Menu}
                                 hideNavBar
                             />
                         </Scene>

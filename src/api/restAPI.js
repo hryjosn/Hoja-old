@@ -1,30 +1,21 @@
 import axios from 'axios';
-import { API_ENDPOINT } from 'react-native-dotenv';
+import { API_URL } from 'react-native-dotenv';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Actions } from 'react-native-router-flux';
 
-const endPoint = API_ENDPOINT;
-console.log('API_ENDPOINT', API_ENDPOINT);
+const apiUrl = API_URL;
 export const post = async (url, data, debug = false, timeout = 6000) => {
     const token = await AsyncStorage.getItem('token');
-    const serverUrl = endPoint;
-    const dataUrl = serverUrl + url;
-    const headers = {
-        'Content-Type': 'application/json; charset=UTF-8',
-        Accept: 'application/json;',
-        Authorization: `Bearer ${token}`,
-    };
-
-    if (AsyncStorage.getItem('token')) {
-        headers.Authorization = AsyncStorage.getItem('token');
-    }
-
     return axios({
         method: 'POST',
-        url: dataUrl,
+        url: apiUrl + url,
         data: data, // post Data
         timeout: timeout, // timeout
-        headers,
+        headers:{
+            'Content-Type': 'application/json; charset=UTF-8',
+            Accept: 'application/json;',
+            Authorization: `Bearer ${token}`,
+        },
     })
         .then((response) => {
             // const hasToken = !!response.headers.authorization;

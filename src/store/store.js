@@ -3,7 +3,7 @@ import React from 'react';
 import HomeStore from '@container/Home/store/HomeStore';
 import LoginStore from '@store/LoginStore.js';
 import SignUpStore from '@container/SignUp/store/SignUpStore.js';
-import MenuDetailModalStore from '@container/MenuList/components/MenuDetailModal/store/MenuDetailModalStore.js';
+import MenuDetailModalStore from '@container/Menu/components/MenuDetailModal/store/MenuDetailModalStore.js';
 
 import { MobXProviderContext } from 'mobx-react';
 

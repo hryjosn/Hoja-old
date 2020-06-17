@@ -13,6 +13,7 @@ const initState = {
     sessionToken: null,
     login_flag: false,
     avatar: '',
+    userAcc:'',
     params: {
         email: '',
         password: '',
@@ -27,9 +28,15 @@ class LoginStore extends storeAction {
         extendObservable(this, initState);
     }
     @action handleLogin = async () => {
-        const { email, password } = this.params;
+        const {  password } = this.params;
+        const postData ={password}
+        if(this.userAcc.indexOf('@')!==1){
+            postData.email=this.userAcc;
+        }else {
+            postData.phoneNumber=this.userAcc;
+        }
         try {
-            const res = await callLoginUser({ email, password });
+            const res = await callLoginUser(postData);
             if (res) {
                 const { token } = res;
                 if (token) {
