@@ -8,34 +8,39 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Profile = () => {
-    const { paramsUpdate, params, handleSignOut } = useStores()['LoginStore'];
+    const { ShopStore, LoginStore } = useStores();
 
+    const { handleSignOut } = LoginStore;
+    const { getShopInfo } = ShopStore;
     return (
         <Page>
             <View style={styles.container}>
-                <CircleButton>
 
-                </CircleButton>
-                <TouchableOpacity
-                    onPress={() => {
-                        Actions.push('Menu');
-                    }}>
-                    <Text style={{ fontSize: 20, marginVertical: 20 }}>
-                        我的餐廳
-                    </Text>
-                </TouchableOpacity>
-                <View style={{ marginVertical: 20 }}>
-                    <Text style={styles.descriptionStyle}>姓名</Text>
-                    <Text style={styles.descriptionStyle}>用戶名稱</Text>
-                    <Text style={styles.descriptionStyle}>網站</Text>
-                    <Text style={styles.descriptionStyle}>個人簡介</Text>
+
+                <View style={{ alignItems: 'center' }}>
+                    <CircleButton>
+                    </CircleButton>
+                    <Text style={{ fontSize: 20, marginTop: 20 }}>姓名</Text>
+
+                    <View style={{ marginVertical: 20 }}>
+                        {/*<Text style={styles.descriptionStyle}>網站</Text>*/}
+                        <Text style={styles.descriptionStyle}>個人簡介</Text>
+                    </View>
+                    <TouchableOpacity
+                        onPress={() => {
+                            getShopInfo();
+                            Actions.push('Shop');
+                        }}>
+                        <Text style={{ fontSize: 20, marginVertical: 20 }}>
+                            我的餐廳
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
-                <TouchableOpacity
-                    onPress={() => {
-                        Actions.push('Profile');
-                    }}>
-                    <Icon name={'user-o'} size={35} />
-                </TouchableOpacity>
+
+
+            </View>
+            <View style={{alignItems: "center"}}>
                 <RectangleButton
                     buttonColor={'black'}
                     textColor={'white'}
@@ -45,6 +50,7 @@ const Profile = () => {
                     登出
                 </RectangleButton>
             </View>
+
         </Page>
     );
 };
@@ -54,8 +60,7 @@ export default observer(Profile);
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 30,
-        marginTop: 30,
-        flex: 1,
+        flex:1
     },
     headerStyle: {
         color: '#555555',

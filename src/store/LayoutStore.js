@@ -2,7 +2,7 @@ import { action, extendObservable } from 'mobx';
 import storeAction from '@store/storeAction';
 
 const initState = {
-    menuVisible: false,
+    ShopVisible: false,
 };
 
 class LayoutStore extends storeAction {
@@ -12,8 +12,8 @@ class LayoutStore extends storeAction {
         extendObservable(this, initState);
     }
 
-    @action onChangeMenu = async (e) => {
-        this.updateData('menuVisible', !this.menuVisible);
+    @action onChangeShop = async (e) => {
+        this.updateData('ShopVisible', !this.ShopVisible);
     };
 }
 

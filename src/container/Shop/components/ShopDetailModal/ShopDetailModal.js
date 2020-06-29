@@ -15,13 +15,13 @@ import { useStores } from '@store';
 import { observer } from 'mobx-react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const MenuDetailModal = () => {
+const ShopDetailModal = () => {
     const {
         updateData,
         visible,
         paramsUpdate,
         params,
-    } = useStores().MenuDetailModalStore;
+    } = useStores().ShopDetailModalStore;
     const { name, price, introduction, keyWord } = params;
 
     return (
@@ -122,7 +122,7 @@ const MenuDetailModal = () => {
     );
 };
 
-export default observer(MenuDetailModal);
+export default observer(ShopDetailModal);
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 50,

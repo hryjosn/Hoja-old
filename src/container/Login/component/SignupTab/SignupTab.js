@@ -8,8 +8,8 @@ import { RectangleButton } from '@components';
 const { width } = Dimensions.get('window');
 
 const SignupTab = () => {
-    const { LoginStore } = useStores();
-    const { paramsUpdate, handleLogin,userAcc,updateData, email, password } = LoginStore;
+    const { SignUpStore } = useStores();
+    const { paramsUpdate, handleSignUp,phone, email, password } = SignUpStore;
     return (
         <View
             style={{
@@ -24,23 +24,23 @@ const SignupTab = () => {
                 <TextInput
                     keyboardType="email-address"
                     autoCorrect={false}
-                    value={userAcc}
+                    value={email}
                     style={styles.input}
-                    placeholder="Email/Phone"
+                    placeholder="Email"
                     onChangeText={(value) => {
-                        updateData('userAcc', value);
+                        paramsUpdate('email', value);
                     }}
                     underlineColorAndroid="transparent"
                 />
             </View>
             <View style={[styles.searchSection, { marginTop: 15 }]}>
                 <TextInput
-                    secureTextEntry={true}
                     style={styles.input}
                     placeholder="Phone"
+                    value={phone}
                     autoCorrect={false}
                     onChangeText={(value) => {
-                        updateData('phone', value);
+                        paramsUpdate('phone', value);
                     }}
                     underlineColorAndroid="transparent"
                 />
@@ -64,9 +64,9 @@ const SignupTab = () => {
                     buttonColor={'black'}
                     textColor={'#fff'}
                     onPress={() => {
-                        handleLogin();
+                        handleSignUp();
                     }}>
-                    {Translate.login}
+                    {Translate.register}
                 </RectangleButton>
             </View>
         </View>

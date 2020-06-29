@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 const Page = (props) => {
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar hidden />
+            {/*<StatusBar hidden />*/}
             {props.children}
         </SafeAreaView>
     );
@@ -15,9 +15,7 @@ const Page = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // height: '100%',
-        // backgroundColor: '#F2F2F2',
-        backgroundColor: '#b9b9b9',
+        backgroundColor: '#f6f6f6',
     },
 });
 

@@ -8,7 +8,7 @@ import { useStores } from '@store';
 import Text from '../Text';
 
 const Header = ({ headerText, Right, backFunction, nav }) => {
-    const { onChangeMenu } = useStores().LayoutStore;
+    const { onChangeShop } = useStores().LayoutStore;
     const { init } = useStores().InitStore;
 
     return (

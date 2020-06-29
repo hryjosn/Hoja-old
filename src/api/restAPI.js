@@ -11,7 +11,7 @@ export const post = async (url, data, debug = false, timeout = 6000) => {
         url: apiUrl + url,
         data: data, // post Data
         timeout: timeout, // timeout
-        headers:{
+        headers: {
             'Content-Type': 'application/json; charset=UTF-8',
             Accept: 'application/json;',
             Authorization: `Bearer ${token}`,
@@ -27,6 +27,36 @@ export const post = async (url, data, debug = false, timeout = 6000) => {
             if (response && debug) {
                 console.log(`------------------res:${url}------------------`);
                 console.log(response.data);
+            }
+            if (response.status !== 200) {
+                return response
+            }
+            return response.data;
+        })
+        .catch((e) => {
+            catchError(e);
+            return e;
+        });
+};
+export const get = async (url, debug = false, timeout = 6000) => {
+    const token = await AsyncStorage.getItem('token');
+    return axios({
+        method: 'GET',
+        url: apiUrl + url,
+        timeout: timeout, // timeout
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            Accept: 'application/json;',
+            Authorization: `Bearer ${token}`,
+        },
+    })
+        .then((response) => {
+            if (response && debug) {
+                console.log(`------------------res:${url}------------------`);
+                console.log(response.data);
+            }
+            if (response.status !== 200) {
+                return response
             }
             return response.data;
         })
