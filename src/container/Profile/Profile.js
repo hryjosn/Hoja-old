@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { CircleButton, RectangleButton } from '@components';
+import { View, StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native';
+import { CircleButton, RectangleButton, Header } from '@components';
 import { useStores } from '@store';
 import Page from '@components/Page/Page';
 import { observer } from 'mobx-react';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { restaurantSample } from '@image';
 
 const Profile = () => {
     const { ShopStore, LoginStore } = useStores();
@@ -14,8 +15,24 @@ const Profile = () => {
     const { getShopInfo } = ShopStore;
     return (
         <Page>
-            <View style={styles.container}>
+            <Header headerText={"個人檔案"} />
+            <ImageBackground source={restaurantSample} style={{ flex: 1 }}>
+                <View style={{ ...styles.rowStyle, marginHorizontal: 15 }}>
 
+                </View>
+                <View
+                    style={{
+                        ...styles.signboardStyle,
+                        alignSelf: 'center',
+                        borderRadius: 15,
+                        backgroundColor: 'white',
+                        position: 'relative',
+                        top: 120,
+                    }}>
+
+                </View>
+            </ImageBackground>
+            <View style={styles.container}>
 
                 <View style={{ alignItems: 'center' }}>
                     <CircleButton>
@@ -40,7 +57,7 @@ const Profile = () => {
 
 
             </View>
-            <View style={{alignItems: "center"}}>
+            <View style={{ alignItems: 'center' }}>
                 <RectangleButton
                     buttonColor={'black'}
                     textColor={'white'}
@@ -60,7 +77,7 @@ export default observer(Profile);
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 30,
-        flex:1
+        flex: 1,
     },
     headerStyle: {
         color: '#555555',

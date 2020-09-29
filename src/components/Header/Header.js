@@ -1,45 +1,29 @@
 import React from 'react';
 import { View, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { observer } from 'mobx-react';
 import { useStores } from '@store';
 
 import Text from '../Text';
 
-const Header = ({ headerText, Right, backFunction, nav }) => {
-    const { onChangeShop } = useStores().LayoutStore;
-    const { init } = useStores().InitStore;
+const Header = ({ headerText, Right, Left }) => {
 
     return (
-        <View
-            style={{
-                ...styles.container,
-                ...{ backgroundColor: 'black' },
-            }}>
-            {backFunction && (
-                <TouchableOpacity
-                    onPress={() => {
-                        backFunction();
-                    }}>
-                    <View style={{ paddingLeft: 20 }}>
-                        <Icon name="closecircleo" size={30} color="white" />
-                    </View>
-                </TouchableOpacity>
-            )}
+        <View style={styles.container}>
+            {Left ? <Left/> : <View style={styles.emptyBox}/>}
+
             {headerText && (
                 <View style={{ justifyContent: 'center' }}>
                     <Text
                         style={{
-                            color: 'white',
                             fontSize: 20,
-                            fontWeight: 'bold',
+                            fontWeight: '500',
                         }}>
                         {headerText}
                     </Text>
                 </View>
             )}
-            {Right ? <Right /> : <View style={styles.emptyBox} />}
+            {Right ? <Right/> : <View style={styles.emptyBox}/>}
         </View>
     );
 };

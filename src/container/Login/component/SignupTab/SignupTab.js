@@ -17,7 +17,7 @@ const SignupTab = () => {
                 alignItems: 'center',
                 marginTop: 30,
                 width: width / 2,
-                backgroundColor: 'pink',
+                // backgroundColor: 'pink',
                 alignSelf: 'center',
             }}>
             <View style={styles.searchSection}>

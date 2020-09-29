@@ -32,7 +32,7 @@ const Login = () => {
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: 'pink',
+                    // backgroundColor: 'pink',
                     justifyContent: 'flex-end',
                     alignItems: 'center',
                 }}>
@@ -48,7 +48,7 @@ const Login = () => {
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: 'yellow',
+                    // backgroundColor: 'yellow',
                     justifyContent: 'center',
                     alignItems: 'flex-end',
                     flexDirection: 'row',
@@ -79,7 +79,6 @@ const Login = () => {
 
 const styles = StyleSheet.create({
     searchSection: {
-// flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

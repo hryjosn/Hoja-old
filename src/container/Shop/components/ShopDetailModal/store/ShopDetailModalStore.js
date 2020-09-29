@@ -17,6 +17,9 @@ class ShopDetailModalStore extends storeAction {
         this.initState = initState;
         extendObservable(this, initState);
     }
+    @action openModal=()=>{
+        this.updateData("visible",true)
+    }
 }
 
 export default new ShopDetailModalStore();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
-import { Text } from '@components';
+import Text from '../Text';
 import { observer } from 'mobx-react';
 const Input = ({ label, containerStyle, ...props }) => {
     return (

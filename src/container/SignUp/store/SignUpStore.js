@@ -35,14 +35,14 @@ class SignUpStore extends storeAction {
                 alert(validateArr[0]);
                 return;
             }
-            const res = callSignUpUser(this.params);
+            const res = await callSignUpUser(this.params);
             if (res.status === 200) {
                 LoginStore.login(this.params);
+                this.reset();
             } else {
                 alert('Sign up fail');
             }
 
-            this.reset();
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
                 console.log('That email address is already in use!');
@@ -54,7 +54,7 @@ class SignUpStore extends storeAction {
         }
     };
     validate = postData => {
-        console.log("postData",postData)
+        console.log("postData", postData)
         let validateArr = [];
         const { email, phone, password } = postData;
         if (!email) {

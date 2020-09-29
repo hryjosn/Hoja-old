@@ -19,7 +19,7 @@ import ShopDetailModal from '@container/Shop/components/ShopDetailModal';
 
 const Shop = () => {
     const { ShopStore, ShopDetailModalStore } = useStores();
-    const { updateData, visible } = ShopDetailModalStore;
+    const { openModal, updateData } = ShopDetailModalStore;
     const { name, menuItems } = ShopStore;
     return (
         <Page>
@@ -59,7 +59,7 @@ const Shop = () => {
                         borderRadius: 15,
                         backgroundColor: 'white',
                         position: 'relative',
-                        top: 100,
+                        top: 120,
                     }}>
                     <View
                         style={{
@@ -68,6 +68,7 @@ const Shop = () => {
                             alignItems: 'flex-end',
                         }}>
                         <TouchableOpacity onPress={() => {
+                            openModal()
                         }}>
                             <Icon name={'edit'} size={20}/>
                         </TouchableOpacity>
